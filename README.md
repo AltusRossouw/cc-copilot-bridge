@@ -407,20 +407,30 @@ ollama create devstral-64k -f ~/.ollama/Modelfile.devstral-64k
 OLLAMA_MODEL=devstral-64k cco
 ```
 
-**Recommended Models (January 2026)**:
+**Recommended Models (March 2026)**:
 
 SWE-bench measures real-world agentic coding ability (GitHub issue resolution with tool calling, multi-file editing). High HumanEval scores don't guarantee agentic performance.
 
-| Model | SWE-bench Verified | Params | Practical Status | Use Case |
-|-------|-------------------|--------|------------------|----------|
-| **devstral-small-2** | **68.0%** | 24B | ✅ Best agentic (default) | Daily coding, proven reliable |
-| **qwen3-coder:30b** | **69.6%** | 30B | ⚠️ Needs template work | Highest bench, config issues |
-| **ibm/granite4:small-h** | ~62% | 32B (9B active) | ✅ Long context | 70% less VRAM, 1M context |
-| **glm-4.7-flash** | ~65-68% (estimated) | 30B MoE (3B active) | ⚠️ Ollama 0.15.1+ required | Tool calling fix (v0.15.1) |
+| Model | SWE-bench Verified | Params | Min RAM | Practical Status | Use Case |
+|-------|-------------------|--------|---------|------------------|----------|
+| **devstral-small-2** | **68.0%** | 24B | 32GB | ✅ Best agentic (default) | Daily coding, proven reliable |
+| **qwen3-coder:30b** | **69.6%** | 30B | 32GB | ⚠️ Needs template work | Highest bench, config issues |
+| **ibm/granite4:small-h** | ~62% | 32B (9B active) | 16GB | ✅ Long context | 70% less VRAM, 1M context |
+| **glm-4.7-flash** | ~65-68% (estimated) | 30B MoE (3B active) | 16GB | ⚠️ Ollama 0.15.1+ required | Tool calling fix (v0.15.1) |
+| **qwen3-coder-next:80b** | **42.8%** | 80B (3B active) | 64GB | ⚠️ High-end only | Near-Sonnet quality, MoE efficient |
+
+**On the radar (not yet locally runnable)**:
+
+| Model | SWE-bench Verified | Params | Status |
+|-------|-------------------|--------|--------|
+| **DeepSeek V4** | ~80%+ (internal) | 1T | ❌ Cloud only — watch for distilled variants |
+
+> **DeepSeek V4** (released Feb 2026): 1T parameters, 1M context window, Apache 2.0. Top SWE-bench scores but requires 200GB+ RAM even quantized. No runnable distillation confirmed for Ollama yet. Follow [DeepSeek releases](https://github.com/deepseek-ai) for Q4 distillations.
 
 **Benchmark Sources:**
 - Devstral-small-2: [Mistral AI](https://mistral.ai/news/devstral-2-vibe-cli) - 68.0% SWE-bench Verified
 - Qwen3-coder: [Index.dev](https://www.index.dev/blog/qwen-ai-coding-review) - 69.6% SWE-bench Verified
+- Qwen3-Coder-Next: [dev.to](https://dev.to/sienna/qwen3-coder-next-the-complete-2026-guide-to-running-powerful-ai-coding-agents-locally-1k95) - 42.8% SWE-bench Verified (3B active params)
 - GLM-4.7 full: [Z.AI](https://z.ai/blog/glm-4.7) - 73.8% (Flash variant "tier lower", no published bench)
 
 **Why Devstral despite lower SWE-bench?**
