@@ -49,8 +49,6 @@ jobs:
             claude-switch \
             install.sh \
             scripts/ \
-            mcp-profiles/ \
-            aliases.sh \
             README.md \
             CHANGELOG.md \
             LICENSE \
@@ -77,7 +75,7 @@ jobs:
           mkdir -p cc-copilot-bridge_${VERSION}/usr/local/share/cc-copilot-bridge
           cp claude-switch cc-copilot-bridge_${VERSION}/usr/local/bin/
           chmod +x cc-copilot-bridge_${VERSION}/usr/local/bin/claude-switch
-          cp -r scripts mcp-profiles aliases.sh cc-copilot-bridge_${VERSION}/usr/local/share/cc-copilot-bridge/
+          cp -r scripts cc-copilot-bridge_${VERSION}/usr/local/share/cc-copilot-bridge/
 
           # Build .deb
           dpkg-deb --build cc-copilot-bridge_${VERSION}
@@ -104,8 +102,6 @@ jobs:
           mkdir -p %{buildroot}/usr/local/share/cc-copilot-bridge
           install -m 755 %{_sourcedir}/claude-switch %{buildroot}/usr/local/bin/
           cp -r %{_sourcedir}/scripts %{buildroot}/usr/local/share/cc-copilot-bridge/
-          cp -r %{_sourcedir}/mcp-profiles %{buildroot}/usr/local/share/cc-copilot-bridge/
-          cp %{_sourcedir}/aliases.sh %{buildroot}/usr/local/share/cc-copilot-bridge/
 
           %files
           /usr/local/bin/claude-switch
@@ -118,7 +114,7 @@ jobs:
 
           # Copy sources for .rpm
           cp claude-switch rpmbuild/SOURCES/
-          cp -r scripts mcp-profiles aliases.sh rpmbuild/SOURCES/
+          cp -r scripts rpmbuild/SOURCES/
 
           # Build .rpm
           rpmbuild --define "_topdir $(pwd)/rpmbuild" -bb rpmbuild/SPECS/claude-switch.spec
