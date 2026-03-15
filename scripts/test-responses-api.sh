@@ -118,7 +118,7 @@ run_test "Codex Max" "gpt-5.1-codex-max" "2+2" ""
 log "\n=== PHASE 2: Regression Tests (Non-Codex) ==="
 
 run_test "GPT-5 (non-Codex)" "gpt-5" "1+1" ""
-run_test "Claude Sonnet" "claude-sonnet-4.5" "Hello" ""
+run_test "Claude Sonnet" "claude-sonnet-4-6" "Hello" ""
 
 # Phase 3: Agentic capabilities
 log "\n=== PHASE 3: Agentic Tests ==="

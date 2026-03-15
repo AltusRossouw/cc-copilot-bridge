@@ -1,6 +1,6 @@
 # Dynamic Model Switching Guide
 
-**Reading time**: 15 minutes | **Skill level**: Intermediate | **Version**: v1.6.0 | **Last updated**: 2026-02-18
+**Reading time**: 15 minutes | **Skill level**: Intermediate | **Version**: v1.7.0 | **Last updated**: 2026-03-15
 
 ---
 
@@ -11,22 +11,23 @@ Le script `claude-switch` supporte maintenant le changement dynamique de modèle
 ⚠️ **Important**: Tous les modèles ne sont pas compatibles avec l'endpoint `/chat/completions` utilisé par copilot-api. Voir section Compatibilité ci-dessous.
 
 ### ✅ Claude Models (Testés et fonctionnels)
-- `claude-sonnet-4.5` (ancien défaut, meilleur rapport qualité/vitesse)
-- `claude-sonnet-4-6` ⭐ **NOUVEAU** (nouveau daily driver, performances améliorées - défaut depuis v1.6.0)
+- `claude-sonnet-4-6` (ancien défaut, meilleur rapport qualité/vitesse)
+- `claude-sonnet-4-6` ⭐ **NOUVEAU** (nouveau daily driver, performances améliorées - défaut depuis v1.7.0)
 - `claude-opus-4-6` **NOUVEAU** (meilleure qualité 2026)
-- `claude-opus-4.5` (meilleure qualité, plus lent)
+- `claude-opus-4-6` (meilleure qualité, plus lent)
 - `claude-haiku-4.5` (le plus rapide)
 - `claude-sonnet-4`
 
 ### ✅ GPT Models (Compatibles avec `/chat/completions`)
 - ✅ `gpt-4.1` (défaut, 0x premium, équilibré) ⭐
+- ✅ `gpt-5.4` (top GPT, xhigh reasoning, 1x premium) ★ NEW
+- ✅ `gpt-5.1` (standard, 1x premium) NEW
 - ✅ `gpt-5.2` (latest GPT general, 1x premium)
-- ⚠️ `gpt-5` ⚠️ DEPRECATED (17 fév 2026) → utiliser `gpt-5.2`
 - ✅ `gpt-5-mini` (ultra rapide, 0x premium)
 - ⚠️ `gpt-4o` ⚠️ DEPRECATED (toujours GA, mais déprécié)
 
 ### ✅ GPT Codex Models (via unified fork - endpoint `/responses`)
-- ✅ `gpt-5.3-codex` (via unified fork)
+- ✅ `gpt-5.3-codex` (via unified fork v1.3.1)
 - ✅ `gpt-5.2-codex` (GA depuis 14 jan 2026, via unified fork)
 - ✅ `gpt-5.1-codex-mini` (Preview, via unified fork)
 
@@ -36,15 +37,16 @@ Le script `claude-switch` supporte maintenant le changement dynamique de modèle
 
 ### ✅ Gemini Models
 - `gemini-2.5-pro` (stable, recommandé)
-- `gemini-3-pro-preview` (preview, peut retourner 400)
-- `gemini-3-flash-preview` (preview, rapide mais instable)
+- `gemini-3.1-pro-preview` (nouvelle version, via unified fork v1.3.1) ★ NEW
+- `gemini-3-pro-preview` (preview, via unified fork)
+- `gemini-3-flash-preview` (preview, rapide)
 
 ### ⚠️ Autres
 - ✅ `grok-code-fast-1` (rapide, spécialisé code)
 - ✅ `raptor-mini` (léger, rapide)
 
 ### ❌ Modèles dépréciés (17 février 2026)
-- `claude-opus-4.1` → Utiliser `claude-opus-4.5` à la place
+- `claude-opus-4.1` → Utiliser `claude-opus-4-6` à la place
 
 ## ⚠️ Compatibilité des modèles - Limitation Architecturale Majeure
 
@@ -73,8 +75,8 @@ Le script `claude-switch` supporte maintenant le changement dynamique de modèle
 - `gpt-5-mini` (0x premium, rapide)
 
 **Option 2 : Utiliser Claude via Copilot** (100% compatible) :
-- `claude-sonnet-4.5` (meilleur rapport qualité/vitesse)
-- `claude-opus-4.5` (qualité maximale)
+- `claude-sonnet-4-6` (meilleur rapport qualité/vitesse)
+- `claude-opus-4-6` (qualité maximale)
 
 **Option 3 : Attendre une mise à jour copilot-api** :
 - Requiert réécriture du routeur API (modification majeure)
@@ -92,7 +94,7 @@ Le script `claude-switch` supporte maintenant le changement dynamique de modèle
 
 ```bash
 # Utiliser Opus pour une session
-COPILOT_MODEL=claude-opus-4.5 claude-switch copilot
+COPILOT_MODEL=claude-opus-4-6 claude-switch copilot
 
 # Utiliser GPT-4.1 (compatible, inclus)
 COPILOT_MODEL=gpt-4.1 ccc
@@ -108,8 +110,8 @@ Déjà configurés dans votre `~/.zshrc`:
 ```bash
 # Après `source ~/.bash_aliases`:
 
-ccc-opus     # Claude Opus 4.5 (meilleure qualité)
-ccc-sonnet   # Claude Sonnet 4.5 (défaut)
+ccc-opus     # Claude Opus 4.6 (meilleure qualité)
+ccc-sonnet   # Claude Sonnet 4.6 (défaut)
 ccc-haiku    # Claude Haiku 4.5 (ultra rapide)
 ccc-gpt      # GPT-4.1 (alternative GPT, 0x premium)
 ```
@@ -118,7 +120,7 @@ ccc-gpt      # GPT-4.1 (alternative GPT, 0x premium)
 
 ```bash
 # Définir pour toute la session shell
-export COPILOT_MODEL=claude-opus-4.5
+export COPILOT_MODEL=claude-opus-4-6
 
 # Tous les appels à `ccc` utiliseront Opus
 ccc
@@ -133,8 +135,8 @@ unset COPILOT_MODEL
 
 | Modèle | Qualité | Vitesse | Usage recommandé |
 |--------|---------|---------|------------------|
-| **claude-opus-4.5** | ⭐⭐⭐⭐⭐ | 🐢 Lent | Code critique, architecture |
-| **claude-sonnet-4.5** | ⭐⭐⭐⭐ | ⚡ Rapide | Développement quotidien (défaut) |
+| **claude-opus-4-6** | ⭐⭐⭐⭐⭐ | 🐢 Lent | Code critique, architecture |
+| **claude-sonnet-4-6** | ⭐⭐⭐⭐ | ⚡ Rapide | Développement quotidien (défaut) |
 | **claude-haiku-4.5** | ⭐⭐⭐ | ⚡⚡⚡ Ultra rapide | Refactoring simple, questions rapides |
 
 ## Exemples d'usage
@@ -159,13 +161,13 @@ ccc-opus
 
 ```bash
 # Tester la même question avec différents modèles
-COPILOT_MODEL=claude-sonnet-4.5 ccc
+COPILOT_MODEL=claude-sonnet-4-6 ccc
 > Optimize this algorithm
 
 COPILOT_MODEL=gpt-4.1 ccc
 > Optimize this algorithm
 
-COPILOT_MODEL=claude-opus-4.5 ccc
+COPILOT_MODEL=claude-opus-4-6 ccc
 > Optimize this algorithm
 ```
 
@@ -247,7 +249,7 @@ ccc-gemini
 - ⚠️ **Éviter** : File creation, complex tool chains
 - 🚫 **Production** : Préférer Claude ou GPT-4.1
 
-### Gemini 3 Pro Preview (Expérimental)
+### Gemini 3 Pro Preview (Supported via fork v1.3.1)
 
 ```bash
 COPILOT_MODEL=gemini-3-pro-preview ccc
@@ -300,8 +302,8 @@ COPILOT_MODEL=gemini-3-flash-preview ccc
 | Modèle | Prompts Simples | Mode Agentic | File Creation | MCP Tools | Status | Recommandation |
 |--------|----------------|--------------|---------------|-----------|--------|----------------|
 | `gemini-2.5-pro` | ✅ Excellent | ⚠️ Limité | ⚠️ Instable | ⚠️ Partiel | ⚠️ DEPRECATED (17 fév 2026 - hier) | ⚠️ **Migrer vers Claude** |
-| `gemini-3-pro-preview` | ✅ Bon | ❌ Mauvais | ❌ Échoue | ❌ Échoue | Experimental | ❌ **Requiert workaround** |
-| `gemini-3-flash-preview` | ✅ Bon | ❌ Mauvais | ❌ Échoue | ❌ Échoue | Experimental | 🚫 **Éviter** |
+| `gemini-3-pro-preview` | ✅ Bon | ❌ Mauvais | ❌ Échoue | ❌ Échoue | Supported (via fork v1.3.1) | ❌ **Requiert workaround** |
+| `gemini-3-flash-preview` | ✅ Bon | ❌ Mauvais | ❌ Échoue | ❌ Échoue | Supported (via fork v1.3.1) | 🚫 **Éviter** |
 
 **Comparaison avec alternatives stables** :
 
@@ -390,7 +392,7 @@ cat debug-gemini/diagnostic-report.md
 - ✅ Expérimentation et tests
 
 **Pour tout le reste, préférer** :
-- ⭐ **Claude Sonnet 4.6** (`ccc-sonnet` - Claude Sonnet 4.6 depuis v1.6.0) - Meilleur choix général
+- ⭐ **Claude Sonnet 4.6** (`ccc-sonnet` - Claude Sonnet 4.6 depuis v1.7.0) - Meilleur choix général
 - ✅ **GPT-4.1** (`ccc-gpt`) - Alternative solide
 - ✅ **Claude Opus 4.6** (`ccc-opus`) - Qualité maximale
 
@@ -519,9 +521,9 @@ Le script log maintenant le modèle utilisé:
 ```bash
 $ cat ~/.claude/claude-switch.log
 
-[2026-01-21 16:30:12] [INFO] Provider: GitHub Copilot (via copilot-api) - Model: claude-opus-4.5
-[2026-01-21 16:30:12] [INFO] Session started: mode=copilot:claude-opus-4.5 pid=12345
-[2026-01-21 16:32:45] [INFO] Session ended: mode=copilot:claude-opus-4.5 duration=2m33s exit=0
+[2026-01-21 16:30:12] [INFO] Provider: GitHub Copilot (via copilot-api) - Model: claude-opus-4-6
+[2026-01-21 16:30:12] [INFO] Session started: mode=copilot:claude-opus-4-6 pid=12345
+[2026-01-21 16:32:45] [INFO] Session ended: mode=copilot:claude-opus-4-6 duration=2m33s exit=0
 
 [2026-01-21 16:35:01] [INFO] Provider: GitHub Copilot (via copilot-api) - Model: gpt-4.1
 [2026-01-21 16:35:01] [INFO] Session started: mode=copilot:gpt-4.1 pid=12567
@@ -534,8 +536,8 @@ $ cat ~/.claude/claude-switch.log
 grep "mode=copilot:" ~/.claude/claude-switch.log | cut -d':' -f4 | sort | uniq -c
 
 # Exemple output:
-# 12 claude-sonnet-4.5
-#  5 claude-opus-4.5
+# 12 claude-sonnet-4-6
+#  5 claude-opus-4-6
 #  3 gpt-4.1
 #  2 claude-haiku-4.5
 ```
@@ -573,8 +575,8 @@ copilot-api:    ✓ Running (:4141)
 Ollama:         ✓ Running (1 models)
 
 === Recent Sessions ===
-[2026-01-21 16:30:12] [INFO] Session started: mode=copilot:claude-opus-4.5 pid=12345
-[2026-01-21 16:32:45] [INFO] Session ended: mode=copilot:claude-opus-4.5 duration=2m33s exit=0
+[2026-01-21 16:30:12] [INFO] Session started: mode=copilot:claude-opus-4-6 pid=12345
+[2026-01-21 16:32:45] [INFO] Session ended: mode=copilot:claude-opus-4-6 duration=2m33s exit=0
 ```
 
 ## Troubleshooting
@@ -595,19 +597,19 @@ copilot-api start
 
 # Vous verrez:
 # ℹ Available models:
-# - claude-sonnet-4.5
-# - claude-opus-4.5
+# - claude-sonnet-4-6
+# - claude-opus-4-6
 # ...
 ```
 
 ### Modèle par défaut
 
-Sans `COPILOT_MODEL`, le script utilise `claude-sonnet-4.5` (meilleur compromis).
+Sans `COPILOT_MODEL`, le script utilise `claude-sonnet-4-6` (meilleur compromis).
 
 Pour changer le défaut, éditez `~/bin/claude-switch` ligne 100:
 
 ```bash
-local model="${COPILOT_MODEL:-claude-opus-4.5}"  # Nouveau défaut: Opus
+local model="${COPILOT_MODEL:-claude-opus-4-6}"  # Nouveau défaut: Opus
 ```
 
 ## Recommandations stratégiques

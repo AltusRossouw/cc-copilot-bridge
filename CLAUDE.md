@@ -63,13 +63,16 @@ ccd, ccc, cco, ccs
 ccc-opus, ccc-sonnet, ccc-haiku
 
 # GPT models
-ccc-gpt41, ccc-gpt5, ccc-gpt5-mini
+ccc-gpt41, ccc-gpt5, ccc-gpt54, ccc-gpt51, ccc-gpt52, ccc-gpt5-mini
 
 # Codex models (requires ccunified)
 ccc-codex, ccc-codex-std, ccc-codex-mini, ccc-codex-max
 
 # Gemini models
-ccc-gemini, ccc-gemini3, ccc-gemini3-pro
+ccc-gemini, ccc-gemini3, ccc-gemini3-pro, ccc-gemini31
+
+# Claude extras
+ccc-opus-fast
 
 # Ollama models
 cco-devstral, cco-granite
@@ -117,21 +120,24 @@ Before launching, `claude-switch` verifies:
 |----------|----------|--------|-------------------|
 | Anthropic | Native | Opus/Sonnet/Haiku (4.5/4.6) | 100% (permissive) |
 | Copilot-Claude | /chat/completions | claude-sonnet-4-6, claude-opus-4-6, claude-haiku-4.5 | 100% (permissive) |
-| Copilot-GPT | /chat/completions | gpt-4.1, gpt-5.2, gpt-5-mini | ~80% (strict validation) |
+| Copilot-GPT | /chat/completions | gpt-4.1, gpt-5.1, gpt-5.2, gpt-5.4, gpt-5-mini | ~80% (strict validation) |
 | Copilot-Gemini | /chat/completions | gemini-2.5-pro ⚠️ deprecated | ~80% (strict validation) |
-| Copilot-Gemini3 | /chat/completions | gemini-3-flash-preview, gemini-3-pro-preview | ⚠️ UNTESTED agentic (via unified fork) |
-| Copilot-Codex | /responses | gpt-5.3-codex, gpt-5.2-codex, gpt-5.1-codex-* | ✅ Tested (via unified fork v1.1.6) |
+| Copilot-Gemini3 | /chat/completions | gemini-3-flash-preview, gemini-3-pro-preview, gemini-3.1-pro-preview | ✅ Supported (via unified fork v1.3.1) |
+| Copilot-Codex | /responses | gpt-5.3-codex, gpt-5.2-codex, gpt-5.1-codex-* | ✅ Tested (via unified fork v1.3.1) |
 | Copilot-Grok | /chat/completions | grok-code-fast-1 | ✅ Compatible |
 | Copilot-Codex | /responses | gpt-*-codex | ✅ Tested (via unified fork) |
 | Ollama | Native | devstral, granite4, qwen3-coder | 100% (permissive) |
 
-**Unified Fork (PR #167 + #170) - EXPERIMENTAL:**
+**Unified Fork (PR #167 + #170) - RECOMMENDED:**
 
-The unified fork combines two features from caozhiyuan/copilot-api branch 'all':
+The unified fork (v1.3.1) goes far beyond the original PRs:
 - **PR #167**: Gemini 3 thinking support (`thought_signature`, `reasoning_text`, `reasoning_opaque`)
 - **PR #170**: GPT Codex `/responses` endpoint support
-
-**⚠️ Gemini 3 Warning**: PR #167 adds support for "thinking" response fields. This is **NOT** a fix for tool calling format translation. The core issue (Claude → OpenAI → Gemini format) may still exist. **Testing required before relying on it.**
+- **v1.2.4**: Fix adaptive thinking with tool choices
+- **v1.2.5**: gpt-5.4 (xhigh reasoning), multi-provider support, `--claude-code` flag
+- **v1.3.0**: Per-model temperature/topP/topK config
+- Native Anthropic Messages API for Claude models (no translation overhead)
+- smallModel routing: warmup/compact auto-routed to gpt-5-mini (saves premium requests)
 
 **Usage:**
 ```bash
@@ -139,10 +145,11 @@ The unified fork combines two features from caozhiyuan/copilot-api branch 'all':
 ccunified  # Uses scripts/launch-unified-fork.sh
 
 # Terminal 2: Use models
-ccc-codex         # gpt-5.2-codex ✅ Tested
+ccc-codex         # gpt-5.3-codex ✅ Tested
 ccc-codex-mini    # gpt-5.1-codex-mini ✅ Tested
-ccc-gemini3       # gemini-3-flash-preview ⚠️ Untested agentic
-ccc-gemini3-pro   # gemini-3-pro-preview ⚠️ Untested agentic
+ccc-gpt54         # gpt-5.4 ✅ xhigh reasoning
+ccc-gemini31      # gemini-3.1-pro-preview ✅ Supported
+ccc-gemini3       # gemini-3-flash-preview ✅ Supported
 ```
 
 **Fork Source:** [caozhiyuan/copilot-api branch 'all'](https://github.com/caozhiyuan/copilot-api/tree/all)
@@ -381,9 +388,9 @@ ollama pull ibm/granite4:small-h
 
 ### Issue: "model gpt-5.2-codex is not accessible via /chat/completions endpoint"
 **Cause:** ALL GPT Codex models require `/responses` endpoint (copilot-api v0.7.0 doesn't support it)
-**Solution:** Use compatible models:
+**Solution:** Use the unified fork (`ccunified`) which supports `/responses`, or use compatible models:
 - `gpt-4.1` (0x premium, recommended)
-- `gpt-5` (1x premium)
+- `gpt-5.4` (1x premium, xhigh reasoning)
 - `gpt-5-mini` (0x premium, fastest)
 
 ## File Organization Rules
@@ -689,12 +696,13 @@ ccc -p "1+1"
 | Model | Simple Prompts | Agentic Mode | Status |
 |--------|----------------|--------------|--------|
 | `gemini-2.5-pro` | ✅ OK | ⚠️ Limited | Deprecating 2/17/26 |
-| `gemini-3-pro-preview` | ✅ OK | ⚠️ UNTESTED via fork | Experimental |
-| `gemini-3-flash-preview` | ✅ OK | ⚠️ UNTESTED via fork | Experimental |
+| `gemini-3-pro-preview` | ✅ OK | ⚠️ Limited | Supported via fork v1.3.1 |
+| `gemini-3-flash-preview` | ✅ OK | ⚠️ Limited | Supported via fork v1.3.1 |
+| `gemini-3.1-pro-preview` | ✅ OK | ⚠️ Limited | New, supported via fork v1.3.1 |
 
 **Solutions**:
 
-**Option 0: Test Unified Fork (EXPERIMENTAL)** 🧪
+**Option 0: Utiliser le fork v1.3.1 (RECOMMENDED)** ✅
 
 The unified fork adds PR #167 (Gemini 3 thinking) + PR #170 (Codex).
 
@@ -831,11 +839,12 @@ Actuellement Gemini 3 Preview:
 
 ## Version Information
 
-- **claude-switch**: v1.6.0 (2026-02-18) - Models update: Claude 4.6, GPT-5.3-Codex, Grok Code Fast 1, Ollama 0.15.3
-- **copilot-api**: v0.7.0 (official, stalled since Oct 2025) + unified fork v1.1.6 (recommended)
+- **claude-switch**: v1.7.0 (2026-03-15) - Models update: Claude 4.6, GPT-5.3-Codex, Grok Code Fast 1, Ollama 0.15.3
+- **copilot-api**: v0.7.0 (official, stalled since Oct 2025) + unified fork v1.3.1 (recommended)
   - Official: `/chat/completions` only, stalled - voir issue #174 pour fix billing header
   - ⚠️ **Issue #191**: Risque de breaking change API GitHub - surveiller
-  - Fork v1.1.6 (caozhiyuan): Gemini 3 thinking + Codex `/responses` - **recommandé par défaut**
+  - Fork v1.3.1 (caozhiyuan): native Anthropic Messages API, smallModel routing, Codex `/responses`, gpt-5.4, gemini-3.1 - **recommandé par défaut**
+  - Flag `--claude-code` : génère la commande de lancement Claude Code (sans claude-switch)
   - Fork source: [caozhiyuan/copilot-api branch 'all'](https://github.com/caozhiyuan/copilot-api/tree/all)
 - **Claude Code CLI**: v2.1.15 (@anthropic-ai/claude-code npm package)
 - **Ollama**: v0.15.3 stable, default model: devstral-small-2 (backup: ibm/granite4:small-h)

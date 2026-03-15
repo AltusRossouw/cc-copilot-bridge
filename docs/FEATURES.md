@@ -20,7 +20,7 @@ ccc     # GitHub Copilot (free prototyping)
 cco     # Ollama Local (100% private)
 
 # Switch models in one line
-ccc-opus    # Claude Opus 4.5
+ccc-opus    # Claude Opus 4.6
 ccc-gpt     # GPT-4.1
 ccc-gemini  # Gemini Pro
 ```
@@ -189,8 +189,8 @@ ERROR: copilot-api not running on :4141
 # After starting copilot-api
 ❯ ccc
 copilot-api health: OK
-Provider: GitHub Copilot (via copilot-api) - Model: claude-sonnet-4.5
-━━━ Claude Code [GitHub Copilot: claude-sonnet-4.5] ━━━
+Provider: GitHub Copilot (via copilot-api) - Model: claude-sonnet-4-6
+━━━ Claude Code [GitHub Copilot: claude-sonnet-4-6] ━━━
 # ✅ Session starts
 ```
 
@@ -353,7 +353,7 @@ ccs        # Check status
 
 # Advanced
 ccc-gpt    # GPT-4.1 via Copilot
-ccc-opus   # Claude Opus 4.5
+ccc-opus   # Claude Opus 4.6
 OLLAMA_MODEL=deepseek-coder:33b cco  # Specific local model
 ```
 

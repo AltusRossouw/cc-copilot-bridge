@@ -25,7 +25,7 @@ RESPONSE=$(curl -s -X POST http://localhost:4141/v1/messages \
   -H "Content-Type: application/json" \
   -H "anthropic-version: 2023-06-01" \
   -d '{
-    "model": "claude-sonnet-4.5",
+    "model": "claude-sonnet-4-6",
     "max_tokens": 100,
     "system": "x-anthropic-billing-header: ?cc_version=2.1.15; ?cc_entrypoint=\\+\n./\n\nYou are a helpful assistant.",
     "messages": [{"role": "user", "content": "Say hello"}]
@@ -54,7 +54,7 @@ RESPONSE2=$(curl -s -X POST http://localhost:4141/v1/messages \
   -H "Content-Type: application/json" \
   -H "anthropic-version: 2023-06-01" \
   -d '{
-    "model": "claude-sonnet-4.5",
+    "model": "claude-sonnet-4-6",
     "max_tokens": 100,
     "system": "You are a helpful assistant.",
     "messages": [{"role": "user", "content": "Say hello"}]

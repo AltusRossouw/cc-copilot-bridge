@@ -15,7 +15,7 @@ eval "$(claude-switch --shell-config)"
 | Alias | Command | Description |
 |-------|---------|-------------|
 | `ccd` | `claude-switch direct` | Anthropic Direct API (requires `ANTHROPIC_API_KEY`) |
-| `ccc` | `claude-switch copilot` | GitHub Copilot via copilot-api (default: claude-sonnet-4.5) |
+| `ccc` | `claude-switch copilot` | GitHub Copilot via copilot-api (default: claude-sonnet-4-6) |
 | `cco` | `claude-switch ollama` | Local Ollama models (default: devstral-small-2) |
 | `ccs` | `claude-switch status` | Show status of all providers |
 
@@ -41,9 +41,10 @@ ccc-haiku -p "Explain what this function does"
 | Alias | Model | Billing | Use Case |
 |-------|-------|---------|----------|
 | `ccc-gpt41` / `ccc-gpt` | `gpt-4.1` | 0x (free) | Alternative perspective, second opinion |
-| `ccc-gpt5` | `gpt-5` | 1x (premium) | Latest GPT, enhanced reasoning |
+| `ccc-gpt5` / `ccc-gpt54` | `gpt-5.4` | 1x (premium) | Top GPT, xhigh reasoning |
+| `ccc-gpt51` | `gpt-5.1` | 1x (premium) | GPT 5.1 standard |
+| `ccc-gpt52` | `gpt-5.2` | 1x (premium) | GPT 5.2 general |
 | `ccc-gpt5-mini` | `gpt-5-mini` | 0x (free) | Fast GPT alternative |
-| `ccc-gpt52` | `gpt-5.2` | 1x (premium) | Latest GPT general |
 | `ccc-gpt53-codex` | `gpt-5.3-codex` | 0x (free) | Latest Codex (via ccunified) |
 | `ccc-grok` | `grok-code-fast-1` | 0.25x | Speed-optimized, economical |
 
@@ -92,13 +93,13 @@ ccc-codex-mini -p "Write a binary search function in TypeScript"
 | Alias | Model | Billing | Use Case | Status |
 |-------|-------|---------|----------|--------|
 | `ccc-gemini` | `gemini-2.5-pro` | 0x (free) | Fast iteration, simple prompts | ⚠️ DEPRECATED (since 17 fév 2026) |
-| `ccc-gemini3` | `gemini-3-flash-preview` | 0x (free) | Latest Gemini, experimental | ⚠️ Agentic UNTESTED |
-| `ccc-gemini3-pro` | `gemini-3-pro-preview` | 1x (premium) | Latest Gemini Pro, experimental | ⚠️ Agentic UNTESTED |
+| `ccc-gemini3` | `gemini-3-flash-preview` | 0x (free) | Gemini 3 Flash | ✅ Supported (unified fork) |
+| `ccc-gemini3-pro` | `gemini-3-pro-preview` | 1x (premium) | Gemini 3 Pro | ✅ Supported (unified fork) |
+| `ccc-gemini31` | `gemini-3.1-pro-preview` | 1x (premium) | Gemini 3.1 Pro (new) | ✅ Supported (unified fork v1.3.1) |
 
 **⚠️ Known Limitations:**
 - ✅ Simple prompts work well
-- ⚠️ Agentic mode (file creation, tool calling, MCP) has compatibility issues
-- ⚠️ Gemini 3 models require unified fork but agentic support is **UNTESTED**
+- ⚠️ Agentic mode (file creation, tool calling, MCP) may have compatibility issues
 - **Recommendation:** Use Claude models (`ccc-sonnet`, `ccc-opus`) for 100% reliability
 
 **Example (safe usage):**
@@ -269,6 +270,6 @@ ccc-sonnet -p "..." # ✅ Always works
 ## Version
 
 Aliases documented for:
-- **claude-switch**: v1.6.0
-- **copilot-api**: v0.7.0 (official, stalled) + unified fork v1.1.6 (recommended)
+- **claude-switch**: v1.7.0
+- **copilot-api**: v0.7.0 (official, stalled) + unified fork v1.3.1 (recommended)
 - **Claude Code CLI**: v2.1.15

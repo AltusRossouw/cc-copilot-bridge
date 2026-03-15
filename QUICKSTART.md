@@ -183,8 +183,8 @@ alias cco='claude-switch ollama'
 alias ccs='claude-switch status'
 
 # Copilot Model Shortcuts
-alias ccc-opus='COPILOT_MODEL=claude-opus-4.5 claude-switch copilot'
-alias ccc-sonnet='COPILOT_MODEL=claude-sonnet-4.5 claude-switch copilot'
+alias ccc-opus='COPILOT_MODEL=claude-opus-4-6 claude-switch copilot'
+alias ccc-sonnet='COPILOT_MODEL=claude-sonnet-4-6 claude-switch copilot'
 alias ccc-haiku='COPILOT_MODEL=claude-haiku-4.5 claude-switch copilot'
 alias ccc-gpt='COPILOT_MODEL=gpt-4.1 claude-switch copilot'
 alias ccc-gemini='COPILOT_MODEL=gemini-2.5-pro claude-switch copilot'
@@ -316,10 +316,10 @@ ccc
 
 **What to expect**:
 
-**Claude Sonnet 4.5 (Default Model)**:
+**Claude Sonnet 4.6 (Default Model)**:
 ![Claude Sonnet Response](assets/ccc-sonnet.png)
 
-*Note: Model correctly identifies as "Claude Sonnet 4.5" (via system prompt injection)*
+*Note: Model correctly identifies as "Claude Sonnet 4.6" (via system prompt injection)*
 
 ### Try Different Models
 
@@ -339,7 +339,7 @@ cco
 
 **Visual Examples**:
 
-**Claude Opus 4.5**:
+**Claude Opus 4.6**:
 ![Claude Opus](assets/ccc-opus.png)
 
 **GPT-4.1**:
@@ -444,8 +444,8 @@ ccs      # Check status
 ### Use Different Models (Copilot)
 
 ```bash
-ccc-opus     # Claude Opus 4.5 (3x quota)
-ccc-sonnet   # Claude Sonnet 4.5 (1x quota)
+ccc-opus     # Claude Opus 4.6 (3x quota)
+ccc-sonnet   # Claude Sonnet 4.6 (1x quota)
 ccc-haiku    # Claude Haiku 4.5 (0.33x quota)
 ccc-gpt      # GPT-4.1 (0x = free)
 ```

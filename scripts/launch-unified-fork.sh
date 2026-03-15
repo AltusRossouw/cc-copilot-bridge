@@ -1,24 +1,21 @@
 #!/usr/bin/env bash
-# Unified copilot-api fork launcher (EXPERIMENTAL)
+# Unified copilot-api fork launcher [RECOMMENDED]
 # Combines PR #167 (Gemini 3 thinking) + PR #170 (Codex responses)
 # Source: caozhiyuan/copilot-api branch 'all'
 #
-# ⚠️  EXPERIMENTAL STATUS:
-# - Codex models (/responses): ✅ Tested, working
-# - Gemini 3 thinking: ⚠️  UNTESTED - may or may not improve agentic mode
+# Fork version: v1.3.1 (caozhiyuan/copilot-api) - recommended over official v0.7.0
 #
-# What PR #167 adds:
-# - Support for Gemini 3 "thinking" response fields (thought_signature, reasoning_text)
-# - This is NOT the same as fixing tool calling format translation
-# - The core issue (Claude → OpenAI → Gemini format) may still exist
+# Key features (v1.1.6 → v1.3.1):
+# - Native Anthropic Messages API for Claude models (no translation via Chat Completions)
+# - smallModel routing: warmup/compact requests auto-routed to gpt-5-mini (saves premium)
+# - --claude-code flag: generates Claude Code launch command (useful without claude-switch)
+# - Per-model temperature/topP/topK config
+# - Fix adaptive thinking with tool choices (v1.2.4)
+# - gpt-5.4 support (xhigh reasoning)
 #
-# Models that SHOULD work:
+# Models that work:
 # - Codex: gpt-5.3-codex (latest), gpt-5.2-codex, gpt-5.1-codex, gpt-5.1-codex-mini, gpt-5.1-codex-max
-# Fork version: caozhiyuan/copilot-api v1.1.6 (recommended over official v0.7.0)
-# - Standard: All Claude, GPT-4.1, GPT-5, Gemini 2.5, etc.
-#
-# Models to TEST (uncertain):
-# - Gemini 3: gemini-3-flash-preview, gemini-3-pro-preview
+# - Standard: All Claude, GPT-4.1, gpt-5.4, Gemini 2.5, Gemini 3, etc.
 #
 # Usage:
 #   ./launch-unified-fork.sh          # Start the fork
@@ -41,15 +38,14 @@ NC='\033[0m'
 FORCE_UPDATE="${1:-}"
 
 echo -e "${CYAN}╔═══════════════════════════════════════════════════════════════╗${NC}"
-echo -e "${CYAN}║  ${GREEN}Unified copilot-api Fork${CYAN}  ${YELLOW}[EXPERIMENTAL]${CYAN}                    ║${NC}"
+echo -e "${CYAN}║  ${GREEN}Unified copilot-api Fork${CYAN}  ${GREEN}[RECOMMENDED]${CYAN}                      ║${NC}"
 echo -e "${CYAN}║  PR #167 (Gemini 3 thinking) + PR #170 (Codex /responses)    ║${NC}"
-echo -e "${CYAN}║  Source: caozhiyuan/copilot-api v1.1.6 branch 'all'          ║${NC}"
+echo -e "${CYAN}║  Source: caozhiyuan/copilot-api v1.3.1 branch 'all'          ║${NC}"
 echo -e "${CYAN}╚═══════════════════════════════════════════════════════════════╝${NC}"
 echo ""
-echo -e "${YELLOW}⚠️  Gemini 3 agentic mode: UNTESTED - PR #167 adds thinking support,${NC}"
-echo -e "${YELLOW}   but may not fix tool calling issues. Test before relying on it.${NC}"
+echo -e "${GREEN}Features: native Anthropic Messages API, smallModel routing, gpt-5.4, gemini-3.1${NC}"
 echo ""
-echo -e "${CYAN}Fork version: v1.1.6 (caozhiyuan/copilot-api) - recommended over official v0.7.0${NC}"
+echo -e "${CYAN}Fork version: v1.3.1 (caozhiyuan/copilot-api) - recommended over official v0.7.0${NC}"
 echo ""
 
 # Step 0: Check PRs merge status (informational)
@@ -184,19 +180,18 @@ echo -e "  ${GREEN}GPT Codex (/responses endpoint):${NC} ✅ Tested"
 echo "    - gpt-5.3-codex (latest, recommended)"
 echo "    - gpt-5.2-codex, gpt-5.1-codex, gpt-5.1-codex-mini, gpt-5.1-codex-max"
 echo ""
-echo -e "  ${YELLOW}Gemini 3 (with thinking):${NC} ⚠️  EXPERIMENTAL - Test required"
-echo "    - gemini-3-flash-preview"
-echo "    - gemini-3-pro-preview"
-echo "    Note: PR #167 adds thinking support, but tool calling may still fail"
+echo -e "  ${GREEN}New GPT models:${NC} ✅ Supported"
+echo "    - gpt-5.4 (xhigh reasoning, top GPT — ccc-gpt54)"
+echo "    - gpt-5.1 (standard — ccc-gpt51)"
+echo ""
+echo -e "  ${GREEN}Gemini 3 (with thinking):${NC} ✅ Supported"
+echo "    - gemini-3.1-pro-preview (new — ccc-gemini31)"
+echo "    - gemini-3-flash-preview, gemini-3-pro-preview"
 echo ""
 echo -e "  ${GREEN}Standard models:${NC} ✅ Working"
-echo "    - All Claude models (claude-sonnet-4-6, claude-opus-4-6, claude-haiku-4.5, etc.)"
-echo "    - All GPT models (gpt-4.1, gpt-5, gpt-5-mini, etc.)"
+echo "    - All Claude models (claude-sonnet-4-6, claude-opus-4-6, claude-opus-4.6-fast, etc.)"
+echo "    - All GPT models (gpt-4.1, gpt-5.4, gpt-5-mini, etc.)"
 echo "    - gemini-2.5-pro"
-echo ""
-echo -e "${YELLOW}Test Gemini 3 agentic mode:${NC}"
-echo "  1. ccc-gemini3 -p '1+1'              # Should work (baseline)"
-echo "  2. ccc-gemini3 then 'Create test.txt' # May or may not work (agentic)"
 echo ""
 echo -e "${YELLOW}Press Ctrl+C to stop${NC}"
 echo ""

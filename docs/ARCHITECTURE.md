@@ -149,7 +149,7 @@ _run_copilot() {
   _check_copilot || return 1  # Fail-fast health check
 
   # Model selection (default or from env var)
-  local model="${COPILOT_MODEL:-claude-sonnet-4.5}"
+  local model="${COPILOT_MODEL:-claude-sonnet-4-6}"
 
   # Get model-specific configuration
   local mcp_flags=$(_get_mcp_flags "${model}") || return 1
@@ -186,7 +186,7 @@ _run_copilot() {
 |----------|---------|-------|
 | `ANTHROPIC_BASE_URL` | Redirect API calls to copilot-api | `http://localhost:4141` |
 | `ANTHROPIC_AUTH_TOKEN` | Dummy auth (copilot-api handles real auth) | `<PLACEHOLDER>` |
-| `ANTHROPIC_MODEL` | Tell copilot-api which model to use | `gpt-4.1`, `claude-opus-4.5`, etc. |
+| `ANTHROPIC_MODEL` | Tell copilot-api which model to use | `gpt-4.1`, `claude-opus-4-6`, etc. |
 | `DISABLE_NON_ESSENTIAL_MODEL_CALLS` | Reduce API traffic | `1` |
 | `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` | Further traffic optimization | `1` |
 
@@ -354,8 +354,8 @@ _get_mcp_flags() {
 
 | Model Input | Profile Selected | MCP Servers Loaded |
 |-------------|------------------|--------------------|
-| `claude-sonnet-4.5` | None (default) | All servers (10/10) |
-| `claude-opus-4.5` | None (default) | All servers (10/10) |
+| `claude-sonnet-4-6` | None (default) | All servers (10/10) |
+| `claude-opus-4-6` | None (default) | All servers (10/10) |
 | `gpt-4.1` | `gpt.json` | All except grepai (9/10) |
 | `gpt-5.2-codex` | `gpt.json` | All except grepai (9/10) |
 | `gemini-2.5-pro` | `gemini.json` | All except grepai (9/10) |
@@ -726,7 +726,7 @@ Claude Code CLI → HTTP request to :4141 → copilot-api
                                              ├─ Map to Copilot backend model
                                              │
                                              └─> GitHub Copilot API
-                                                  (claude-opus-4.5, gpt-4.1, etc.)
+                                                  (claude-opus-4-6, gpt-4.1, etc.)
 ```
 
 **API Request Flow**:
@@ -753,8 +753,8 @@ Body:
 
 | ANTHROPIC_MODEL | Copilot Backend | Notes |
 |-----------------|-----------------|-------|
-| `claude-opus-4.5` | `claude-opus-4.5` | Native Copilot model |
-| `claude-sonnet-4.5` | `claude-sonnet-4.5` | Native Copilot model |
+| `claude-opus-4-6` | `claude-opus-4-6` | Native Copilot model |
+| `claude-sonnet-4-6` | `claude-sonnet-4-6` | Native Copilot model |
 | `gpt-4.1` | `gpt-4.1-turbo` | OpenAI model via Copilot |
 | `gpt-5.2-codex` | `gpt-5.2-codex` | OpenAI model via Copilot |
 | `gemini-2.5-pro` | `gemini-2.5-pro` | Google model via Copilot |
@@ -945,7 +945,7 @@ cco  # Automatically uses qwen2.5-coder:32b
 ```
 Model Input
     │
-    ├─ "claude-sonnet-4.5" ──> [No profile needed]
+    ├─ "claude-sonnet-4-6" ──> [No profile needed]
     │                           └─> Use default config
     │                               All MCP servers loaded
     │
@@ -1255,12 +1255,12 @@ _diagnose_mcp_schemas() {
 
 | Command | Alias | Provider | Default Model |
 |---------|-------|----------|---------------|
-| `claude-switch direct` | `ccd` | Anthropic | claude-sonnet-4.5 |
-| `claude-switch copilot` | `ccc` | Copilot | claude-sonnet-4.5 |
+| `claude-switch direct` | `ccd` | Anthropic | claude-sonnet-4-6 |
+| `claude-switch copilot` | `ccc` | Copilot | claude-sonnet-4-6 |
 | `claude-switch ollama` | `cco` | Ollama | qwen2.5-coder:32b |
 | `claude-switch status` | `ccs` | N/A | N/A |
-| N/A | `ccc-opus` | Copilot | claude-opus-4.5 |
-| N/A | `ccc-sonnet` | Copilot | claude-sonnet-4.5 |
+| N/A | `ccc-opus` | Copilot | claude-opus-4-6 |
+| N/A | `ccc-sonnet` | Copilot | claude-sonnet-4-6 |
 | N/A | `ccc-haiku` | Copilot | claude-haiku-4.5 |
 | N/A | `ccc-gpt` | Copilot | gpt-5.2-codex |
 

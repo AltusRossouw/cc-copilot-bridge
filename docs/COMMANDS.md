@@ -21,8 +21,8 @@
 
 | Command | Model | Speed | Use Case |
 |---------|-------|-------|----------|
-| `ccc-opus` | Claude Opus 4.5 | Slow | Best quality, code review |
-| `ccc-sonnet` | Claude Sonnet 4.5 | Medium | Balanced (default) |
+| `ccc-opus` | Claude Opus 4.6 | Slow | Best quality, code review |
+| `ccc-sonnet` | Claude Sonnet 4.6 | Medium | Balanced (default) |
 | `ccc-haiku` | Claude Haiku 4.5 | Fast | Quick questions |
 | `ccc-gpt` | GPT-4.1 | Fast | Alternative perspective (0x quota) |
 
@@ -32,7 +32,7 @@
 
 **Copilot** (25+ models available):
 ```bash
-COPILOT_MODEL=claude-opus-4.5 ccc
+COPILOT_MODEL=claude-opus-4-6 ccc
 COPILOT_MODEL=claude-haiku-4.5 ccc
 COPILOT_MODEL=gpt-4.1 ccc
 COPILOT_MODEL=gemini-3-pro-preview ccc
@@ -303,7 +303,7 @@ watch -n 2 'ps aux | grep ollama | grep -v grep | awk "{printf \"RAM: %.2f GB\n\
 ### 4. Model Aliases in Scripts
 ```bash
 # Add to project-specific .envrc or Makefile
-export COPILOT_MODEL="claude-opus-4.5"
+export COPILOT_MODEL="claude-opus-4-6"
 alias review="ccc"  # Now uses Opus for this project
 ```
 

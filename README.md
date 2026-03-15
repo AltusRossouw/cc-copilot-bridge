@@ -127,7 +127,7 @@ The installer creates `~/.claude/aliases.sh` with these commands:
 ```bash
 # Core commands (created automatically)
 ccd        # Anthropic API (paid)
-ccc        # GitHub Copilot (default: Claude Sonnet 4.5)
+ccc        # GitHub Copilot (default: Claude Sonnet 4.6)
 cco        # Ollama Local (offline)
 ccs        # Check all providers
 
@@ -149,7 +149,7 @@ ccc
 
 # Switch models on-the-fly
 COPILOT_MODEL=gpt-4.1 ccc
-COPILOT_MODEL=claude-opus-4.5 ccc
+COPILOT_MODEL=claude-opus-4-6 ccc
 
 # Check status
 ccs
@@ -157,11 +157,11 @@ ccs
 
 **Visual Examples**:
 
-**Claude Sonnet 4.5 (Default)**:
-![Claude Sonnet 4.5](assets/ccc-sonnet.png)
+**Claude Sonnet 4.6 (Default)**:
+![Claude Sonnet 4.6](assets/ccc-sonnet.png)
 
-**Claude Opus 4.5 (Premium)**:
-![Claude Opus 4.5](assets/ccc-opus.png)
+**Claude Opus 4.6 (Premium)**:
+![Claude Opus 4.6](assets/ccc-opus.png)
 
 **GPT-4.1 (OpenAI)**:
 ![GPT-4.1](assets/ccc-gpt.png)
@@ -243,8 +243,8 @@ No config changes, no restarts, no environment variable juggling.
 
 ```bash
 # Switch models mid-session
-ccc                     # Default: claude-sonnet-4.5
-ccc-opus                # Claude Opus 4.5
+ccc                     # Default: claude-sonnet-4-6
+ccc-opus                # Claude Opus 4.6
 ccc-gpt                 # GPT-4.1
 COPILOT_MODEL=gemini-2.5-pro ccc  # Gemini
 
@@ -254,11 +254,11 @@ cco-devstral            # Explicit Devstral
 cco-granite             # Granite4 (long context)
 ```
 
-### 3. **GPT Codex & Gemini 3 Models** (via Unified Fork - EXPERIMENTAL)
+### 3. **GPT Codex & Gemini 3 Models** (via Unified Fork - RECOMMENDED)
 
 GPT Codex models use OpenAI's `/responses` endpoint, and Gemini 3 models have thinking support. Both require a fork of copilot-api that combines PR #167 and #170.
 
-**⚠️ Important**: Codex models are tested and working. Gemini 3 **agentic mode is UNTESTED** - PR #167 adds thinking support, but may not fix tool calling issues.
+**⚠️ Important**: Codex models are tested and working. Gemini 3 **agentic mode is Supported** - PR #167 adds thinking support, and tool calling issues have been addressed in fork v1.3.1.
 
 **Setup**:
 ```bash
@@ -267,8 +267,8 @@ ccunified
 
 # Terminal 2: Use models
 ccc-codex         # gpt-5.2-codex ✅ Tested
-ccc-gemini3       # gemini-3-flash-preview ⚠️ Experimental
-ccc-gemini3-pro   # gemini-3-pro-preview ⚠️ Experimental
+ccc-gemini3       # gemini-3-flash-preview ✅ Supported
+ccc-gemini3-pro   # gemini-3-pro-preview ✅ Supported
 ```
 
 **Model Status**:
@@ -350,9 +350,9 @@ tail ~/.claude/claude-switch.log
 **Use Case**: Daily coding, prototyping, exploration
 
 ```bash
-ccc                               # Default: claude-sonnet-4.5
+ccc                               # Default: claude-sonnet-4-6
 ccc-gpt                          # GPT-4.1 (0x multiplier = free)
-ccc-opus                         # Claude Opus 4.5 (3x multiplier)
+ccc-opus                         # Claude Opus 4.6 (3x multiplier)
 COPILOT_MODEL=gemini-2.5-pro ccc # Gemini
 ```
 
@@ -537,7 +537,7 @@ cco
 
 - **Claude Code CLI** (Anthropic)
 - **copilot-api** for Copilot provider
-  - **Recommended**: [caozhiyuan/copilot-api v1.1.6](https://github.com/caozhiyuan/copilot-api/tree/all) (fork — actively maintained, includes Codex `/responses` endpoint + Gemini 3 thinking support)
+  - **Recommended**: [caozhiyuan/copilot-api v1.3.1](https://github.com/caozhiyuan/copilot-api/tree/all) (fork — actively maintained, native Anthropic Messages API, Codex `/responses` endpoint, gpt-5.4, gemini-3.1)
   - **Official**: [ericc-ch/copilot-api](https://github.com/ericc-ch/copilot-api) (stalled since Oct 2025, last release v0.7.0)
   - ⚠️ **Note**: Community patch applied to fix [issue #174](https://github.com/ericc-ch/copilot-api/issues/174) (reserved billing header). See [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md#patch-communautaire-solution-avancée) for details.
 - **Ollama** (optional, for local provider)
@@ -579,7 +579,7 @@ cco
 
 ## 🚀 Version
 
-**Current**: v1.6.0
+**Current**: v1.7.0
 
 **Changelog**: See [CHANGELOG.md](CHANGELOG.md)
 

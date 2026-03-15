@@ -96,7 +96,7 @@ See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for full checklist.
 
 ### Q: Which command should I use for daily development?
 
-**A**: Use **`ccc`** (GitHub Copilot with Claude Sonnet 4.5).
+**A**: Use **`ccc`** (GitHub Copilot with Claude Sonnet 4.6).
 
 **Why?**
 - ✅ Uses your existing Copilot subscription
@@ -219,7 +219,7 @@ ccc-gpt  # Pre-configured alias
 
 **Copilot models**:
 ```bash
-COPILOT_MODEL=claude-opus-4.5 ccc
+COPILOT_MODEL=claude-opus-4-6 ccc
 COPILOT_MODEL=gpt-4.1 ccc
 COPILOT_MODEL=gemini-3-pro-preview ccc
 ```
@@ -441,8 +441,8 @@ grep "Session ended" ~/.claude/claude-switch.log
 |-------|------------------|
 | GPT-4.1, GPT-4o, GPT-5-mini | 0x (free) |
 | Claude Haiku 4.5 | 0.33x |
-| Claude Sonnet 4.5, Gemini | 1x |
-| Claude Opus 4.5 | 3x |
+| Claude Sonnet 4.6, Gemini | 1x |
+| Claude Opus 4.6 | 3x |
 
 **Pro ($10/mo)**: 300 premium requests → ~100 Opus interactions or ~300 Sonnet interactions.
 **Pro+ ($39/mo)**: 1,500 premium requests → ~500 Opus interactions.

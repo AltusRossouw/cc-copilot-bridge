@@ -233,7 +233,7 @@ ERROR  HTTP error: { error:
 **TOUS les modèles de la famille GPT Codex** nécessitent l'endpoint OpenAI `/responses` (lancé en octobre 2025) au lieu du standard `/chat/completions`. copilot-api (v0.7.0) ne supporte que `/chat/completions`, rendant **TOUS les modèles Codex incompatibles** :
 
 > **Statut (Feb 2026)**: La version officielle v0.7.0 est stalled depuis octobre 2025.
-> Le fork caozhiyuan (v1.1.6) est maintenant la version maintenue.
+> Le fork caozhiyuan (v1.3.1) est maintenant la version maintenue.
 > ⚠️ **Issue #191**: Risque de casse API GitHub (nouveau format API). Surveiller.
 > Recommandation: utiliser le fork via `ccunified` pour tous les cas d'usage.
 
@@ -258,8 +258,8 @@ COPILOT_MODEL=gpt-5-mini ccc    # Ultra rapide, 0x premium
 **Option 2: Utiliser Claude via Copilot (100% compatible)**
 
 ```bash
-ccc-sonnet  # Claude Sonnet 4.5 (défaut, fiable)
-ccc-opus    # Claude Opus 4.5 (meilleure qualité)
+ccc-sonnet  # Claude Sonnet 4.6 (défaut, fiable)
+ccc-opus    # Claude Opus 4.6 (meilleure qualité)
 ccc-haiku   # Claude Haiku 4.5 (ultra rapide)
 ```
 
@@ -271,8 +271,8 @@ Le PR communautaire [ericc-ch/copilot-api#117](https://github.com/ericc-ch/copil
 
 | Modèle | Statut | Usage |
 |--------|--------|-------|
-| `claude-sonnet-4.5` | ✅ Fonctionne | Développement quotidien |
-| `claude-opus-4.5` | ✅ Fonctionne | Code critique |
+| `claude-sonnet-4-6` | ✅ Fonctionne | Développement quotidien |
+| `claude-opus-4-6` | ✅ Fonctionne | Code critique |
 | `claude-haiku-4.5` | ✅ Fonctionne | Questions rapides |
 | `gpt-4.1` | ✅ Fonctionne | Usage général, 0x premium |
 | `gpt-5` | ✅ Fonctionne | Raisonnement avancé, 1x premium |
@@ -289,7 +289,7 @@ Le PR communautaire [ericc-ch/copilot-api#117](https://github.com/ericc-ch/copil
 
 ```bash
 # À remplacer (dépréciés depuis le 17 février 2026):
-claude-opus-4.1 → claude-opus-4.5
+claude-opus-4.1 → claude-opus-4-6
 gemini-2.5-pro → gemini-3-pro-preview
 ```
 
@@ -484,7 +484,7 @@ curl -s -X POST http://localhost:4141/v1/messages \
   -H "Content-Type: application/json" \
   -H "anthropic-version: 2023-06-01" \
   -d '{
-    "model": "claude-sonnet-4.5",
+    "model": "claude-sonnet-4-6",
     "max_tokens": 100,
     "system": "x-anthropic-billing-header: test\n\nYou are helpful.",
     "messages": [{"role": "user", "content": "Say hello"}]
@@ -535,7 +535,7 @@ copilot-api start
 - ❌ Non testé sur toutes les versions de copilot-api
 - ❌ Peut ne pas couvrir tous les cas edge
 
-> **Note v1.6.0**: La Solution 1 (variable d'environnement) reste la plus fiable.
+> **Note v1.7.0**: La Solution 1 (variable d'environnement) reste la plus fiable.
 > Le patch regex (Solution 2) sera écrasé lors des mises à jour npm.
 
 **Après update de copilot-api** :
@@ -568,7 +568,7 @@ GitHub modifie son API interne. copilot-api officiel (v0.7.0, stalled) pourrait 
 
 ### Solution
 
-- Utiliser le fork caozhiyuan v1.1.6 via `ccunified`
+- Utiliser le fork caozhiyuan v1.3.1 via `ccunified`
 - Fork plus activement maintenu, réponse plus rapide aux breaking changes
 
 ```bash
@@ -619,8 +619,8 @@ ERROR  HTTP error: { error:
 **Option 1: Utiliser Claude (100% compatible MCP)** ⭐ Recommandé
 
 ```bash
-ccc-sonnet   # Claude Sonnet 4.5 (défaut)
-ccc-opus     # Claude Opus 4.5 (meilleure qualité)
+ccc-sonnet   # Claude Sonnet 4.6 (défaut)
+ccc-opus     # Claude Opus 4.6 (meilleure qualité)
 ccc-haiku    # Claude Haiku 4.5 (ultra rapide)
 ```
 
@@ -695,8 +695,8 @@ Compatibility issues: 1
 ═══ Recommendations ═══
 
 Option 1: Use Claude models (100% MCP compatible)
-  ccc-sonnet   # Claude Sonnet 4.5
-  ccc-opus     # Claude Opus 4.5
+  ccc-sonnet   # Claude Sonnet 4.6
+  ccc-opus     # Claude Opus 4.6
 
 Option 2: Disable problematic MCP servers
   Edit: /Users/you/.claude/claude_desktop_config.json
@@ -802,7 +802,7 @@ Test 5 succeeds, Test 2 fails → Gemini 3 preview limitation
 
 ### Solutions
 
-**Option 0: Use Unified Fork (EXPERIMENTAL for Gemini 3)** 🧪
+**Option 0: Use Unified Fork (RECOMMENDED for Gemini 3)** ✅
 
 The unified fork combines PR #167 (Gemini 3 thinking support) + PR #170 (Codex /responses).
 
@@ -836,7 +836,7 @@ ccc-gemini3
 - ✅ Auto-clones and updates fork
 
 **Cons**:
-- ⚠️ **Agentic mode UNTESTED** - may or may not improve tool calling
+- ✅ **Agentic mode Supported** - tool calling improved in fork v1.3.1
 - ⚠️ Requires running fork instead of official copilot-api
 - ⚠️ Fork maintenance depends on community
 
@@ -891,8 +891,8 @@ COPILOT_MODEL=gemini-3-pro-preview CLAUDE_CODE_SUBAGENT_MODEL=gpt-5-mini ccc
 **Option 3: Use Claude Models (100% Compatible)** 🚀 Best Quality
 
 ```bash
-ccc-sonnet  # Claude Sonnet 4.5 (default, balanced)
-ccc-opus    # Claude Opus 4.5 (best quality)
+ccc-sonnet  # Claude Sonnet 4.6 (default, balanced)
+ccc-opus    # Claude Opus 4.6 (best quality)
 ccc-haiku   # Claude Haiku 4.5 (fastest)
 
 ❯ Create hello.txt with "test"
@@ -951,13 +951,13 @@ fi
 
 | Model | Simple Prompts | Agentic/Tools | Status | Recommendation |
 |-------|----------------|---------------|--------|----------------|
-| `claude-sonnet-4.5` | ✅ Excellent | ✅ Excellent | Stable | ⭐ **Best choice** |
-| `claude-opus-4.5` | ✅ Excellent | ✅ Excellent | Stable | ⭐ Best quality |
+| `claude-sonnet-4-6` | ✅ Excellent | ✅ Excellent | Stable | ⭐ **Best choice** |
+| `claude-opus-4-6` | ✅ Excellent | ✅ Excellent | Stable | ⭐ Best quality |
 | `gpt-4.1` | ✅ Excellent | ✅ Good | Stable | ✅ Reliable |
 | `gpt-5` | ✅ Excellent | ✅ Good | Stable | ✅ Advanced reasoning |
 | `gemini-2.5-pro` | ✅ Good | ⚠️ Fair | Deprecated 2/17/26 (passé) | ⚠️ Use with caution |
-| `gemini-3-pro-preview` | ✅ Good | ❌ Poor | Experimental | ❌ Use subagent workaround |
-| `gemini-3-flash-preview` | ✅ Good | ❌ Poor | Experimental | ❌ Use subagent workaround |
+| `gemini-3-pro-preview` | ✅ Good | ⚠️ Limited | Supported (via fork v1.3.1) | ⚠️ Use subagent workaround |
+| `gemini-3-flash-preview` | ✅ Good | ⚠️ Limited | Supported (via fork v1.3.1) | ⚠️ Use subagent workaround |
 
 ### Known Limitations
 
@@ -978,7 +978,7 @@ Current: gemini-2.5-pro
 ↓
 Short-term: gemini-2.5-pro + monitor stability
 ↓
-If issues: Switch to claude-sonnet-4.5 (ccc-sonnet)
+If issues: Switch to claude-sonnet-4-6 (ccc-sonnet)
 ↓
 When stable: Migrate to gemini-3-pro-preview (with subagent)
 ```

@@ -20,7 +20,7 @@ if ! nc -z localhost 4141 2>/dev/null; then
     echo "Please start copilot-api first:"
     echo "  copilot-api start"
     echo "  OR"
-    echo "  ./scripts/launch-responses-fork.sh (for Codex models)"
+    echo "  ./scripts/launch-unified-fork.sh (for Codex models)"
     exit 1
 fi
 
@@ -88,9 +88,9 @@ test_model "gpt-3.5-turbo-0613" "GPT-3.5 Turbo Jun 2023"
 
 # Claude Models
 echo -e "${YELLOW}=== Claude Models ===${NC}\n"
-test_model "claude-opus-4.5" "Claude Opus 4.5"
+test_model "claude-opus-4-6" "Claude Opus 4.6"
 test_model "claude-opus-41" "Claude Opus 4.1"
-test_model "claude-sonnet-4.5" "Claude Sonnet 4.5"
+test_model "claude-sonnet-4-6" "Claude Sonnet 4.6"
 test_model "claude-sonnet-4" "Claude Sonnet 4"
 test_model "claude-haiku-4.5" "Claude Haiku 4.5"
 

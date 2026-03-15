@@ -1054,8 +1054,8 @@ Required:
 All sessions are logged to `~/.claude/claude-switch.log`:
 
 ```bash
-[2026-01-22 09:42:33] [INFO] Provider: GitHub Copilot - Model: claude-sonnet-4.5
-[2026-01-22 09:42:33] [INFO] Session started: mode=copilot:claude-sonnet-4.5 pid=12345
+[2026-01-22 09:42:33] [INFO] Provider: GitHub Copilot - Model: claude-sonnet-4-6
+[2026-01-22 09:42:33] [INFO] Session started: mode=copilot:claude-sonnet-4-6 pid=12345
 [2026-01-22 10:15:20] [INFO] Session ended: duration=32m47s exit=0
 ```
 

@@ -46,3 +46,6 @@ debug-responses-api/
 tap_deploy_key
 tap_deploy_key.pub
 *_deploy_key*
+
+# Vitals provenance data
+.vitals/

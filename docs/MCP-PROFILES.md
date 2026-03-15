@@ -176,7 +176,7 @@ _run_copilot() {
   _check_copilot || return 1
 
   # Allow model override via env var or use default
-  local model="${COPILOT_MODEL:-claude-sonnet-4.5}"
+  local model="${COPILOT_MODEL:-claude-sonnet-4-6}"
 
   # Get MCP flags for this model
   local mcp_flags=$(_get_mcp_flags "${model}") || return 1
@@ -213,7 +213,7 @@ _run_copilot() {
 
 | Command | Model | Profile | Active MCPs |
 |---------|-------|---------|-------------|
-| `ccc` | claude-sonnet-4.5 | default | all (grepai included) |
+| `ccc` | claude-sonnet-4-6 | default | all (grepai included) |
 | `ccc-gpt` | gpt-4.1 | gpt.json | all EXCEPT grepai |
 | `COPILOT_MODEL=gemini-2.5-pro ccc` | gemini-2.5-pro | gemini.json | all EXCEPT exclusions |
 

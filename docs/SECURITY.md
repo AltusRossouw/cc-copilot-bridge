@@ -826,7 +826,7 @@ tail -5 ~/.claude/claude-switch.log
 **Expected log entries**:
 ```
 [INFO] Provider: Anthropic Direct
-[INFO] Provider: GitHub Copilot (via copilot-api) - Model: claude-sonnet-4.5
+[INFO] Provider: GitHub Copilot (via copilot-api) - Model: claude-sonnet-4-6
 [INFO] Provider: Ollama Local
 ```
 

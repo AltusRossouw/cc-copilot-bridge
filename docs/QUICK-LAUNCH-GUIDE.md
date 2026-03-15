@@ -14,7 +14,7 @@ Ajoute à la fin :
 
 ```bash
 # Alias pour lancer copilot-api fork (PR #170 - Codex support)
-alias ccfork='~/Sites/perso/cc-copilot-bridge/scripts/launch-responses-fork.sh'
+alias ccunified='~/Sites/perso/cc-copilot-bridge/scripts/launch-unified-fork.sh'
 ```
 
 Recharge la config :
@@ -27,7 +27,7 @@ source ~/.zshrc
 
 ```bash
 # Lancer le fork (simple !)
-ccfork
+ccunified
 
 # Le script vérifie automatiquement:
 # ✅ Si PR #170 est mergée (affiche warning si oui)
@@ -60,7 +60,7 @@ Continue launching fork anyway? (y/N)
 
 ```bash
 # Lancer le fork (terminal 1)
-ccfork
+ccunified
 
 # Dans un autre terminal, tester tous les modèles
 cd ~/Sites/perso/cc-copilot-bridge
@@ -83,7 +83,7 @@ COPILOT_MODEL=gpt-5.2-codex ccc -p "Write a Python function"
 COPILOT_MODEL=gpt-5.1-codex-mini ccc -p "Quick question"
 
 # Claude Sonnet (référence)
-COPILOT_MODEL=claude-sonnet-4.5 ccc -p "Write a Python function"
+COPILOT_MODEL=claude-sonnet-4-6 ccc -p "Write a Python function"
 
 # GPT-4.1 (alternative)
 COPILOT_MODEL=gpt-4.1 ccc -p "Write a Python function"
@@ -107,7 +107,7 @@ bun install
 bun run build
 
 # 2. Ajouter l'alias
-echo "alias ccfork='~/Sites/perso/cc-copilot-bridge/scripts/launch-responses-fork.sh'" >> ~/.zshrc
+echo "alias ccunified='~/Sites/perso/cc-copilot-bridge/scripts/launch-unified-fork.sh'" >> ~/.zshrc
 source ~/.zshrc
 ```
 
@@ -115,7 +115,7 @@ source ~/.zshrc
 
 **Terminal 1 (Fork):**
 ```bash
-ccfork
+ccunified
 # Laisser tourner
 ```
 
@@ -152,7 +152,7 @@ source ~/.zshrc
 Utilisation :
 
 ```bash
-# Fork lancé avec: ccfork
+# Fork lancé avec: ccunified
 
 # Utiliser directement les alias
 ccc-codex -p "Write a React component"
@@ -195,14 +195,14 @@ curl -s http://localhost:4141/v1/models | jq -r '.data[].id' | grep codex
 
 ## 🔍 Dépannage
 
-### "command not found: ccfork"
+### "command not found: ccunified"
 
 ```bash
 # Vérifier l'alias
-alias | grep ccfork
+alias | grep ccunified
 
 # Si vide, ajouter et recharger
-echo "alias ccfork='~/Sites/perso/cc-copilot-bridge/scripts/launch-responses-fork.sh'" >> ~/.zshrc
+echo "alias ccunified='~/Sites/perso/cc-copilot-bridge/scripts/launch-unified-fork.sh'" >> ~/.zshrc
 source ~/.zshrc
 ```
 
@@ -216,7 +216,7 @@ lsof -i :4141
 pkill -f "copilot-api"
 
 # Relancer
-ccfork
+ccunified
 ```
 
 ### Fork ne démarre pas
@@ -229,7 +229,7 @@ git checkout feature/responses-api
 bun run build
 
 # Relancer
-ccfork
+ccunified
 ```
 
 ---
@@ -238,20 +238,20 @@ ccfork
 
 **Setup (une fois):**
 ```bash
-echo "alias ccfork='~/Sites/perso/cc-copilot-bridge/scripts/launch-responses-fork.sh'" >> ~/.zshrc
+echo "alias ccunified='~/Sites/perso/cc-copilot-bridge/scripts/launch-unified-fork.sh'" >> ~/.zshrc
 source ~/.zshrc
 ```
 
 **Lancer fork:**
 ```bash
-ccfork  # Terminal 1
+ccunified  # Terminal 1
 ```
 
 **Tester modèles:**
 ```bash
 # Terminal 2
 COPILOT_MODEL=gpt-5.2-codex ccc -p "Test"  # Codex
-COPILOT_MODEL=claude-sonnet-4.5 ccc -p "Test"  # Claude
+COPILOT_MODEL=claude-sonnet-4-6 ccc -p "Test"  # Claude
 ```
 
 **Arrêter:**
@@ -271,4 +271,4 @@ pkill -f "copilot-api"
 
 **C'est tout !** 🎉
 
-Avec `ccfork`, tu lances le fork en une commande. Le script vérifie automatiquement si la PR est mergée et t'avertit si le fork n'est plus nécessaire.
+Avec `ccunified`, tu lances le fork en une commande. Le script vérifie automatiquement si la PR est mergée et t'avertit si le fork n'est plus nécessaire.

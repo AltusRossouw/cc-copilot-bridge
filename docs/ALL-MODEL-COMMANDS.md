@@ -112,14 +112,14 @@ COPILOT_MODEL=claude-sonnet-4-6 ccc -p "Write a Python function"
 # Claude Opus 4.6 ★ NEW (Best quality 2026)
 COPILOT_MODEL=claude-opus-4-6 ccc -p "Write a Python function"
 
-# Claude Opus 4.5 (Meilleure qualité)
-COPILOT_MODEL=claude-opus-4.5 ccc -p "Write a Python function"
+# Claude Opus 4.6 (Meilleure qualité)
+COPILOT_MODEL=claude-opus-4-6 ccc -p "Write a Python function"
 
 # Claude Opus 4.1 # ⚠️ DEPRECATED (17 fév 2026)
 COPILOT_MODEL=claude-opus-41 ccc -p "Write a Python function"
 
-# Claude Sonnet 4.5 (Équilibre qualité/vitesse)
-COPILOT_MODEL=claude-sonnet-4.5 ccc -p "Write a Python function"
+# Claude Sonnet 4.6 (Équilibre qualité/vitesse)
+COPILOT_MODEL=claude-sonnet-4-6 ccc -p "Write a Python function"
 
 # Claude Sonnet 4
 COPILOT_MODEL=claude-sonnet-4 ccc -p "Write a Python function"
@@ -133,10 +133,10 @@ COPILOT_MODEL=claude-haiku-4.5 ccc -p "Write a Python function"
 ## 🔮 Gemini Models
 
 ```bash
-# Gemini 3 Pro Preview (Experimental)
+# Gemini 3 Pro Preview (Supported via fork v1.3.1)
 COPILOT_MODEL=gemini-3-pro-preview ccc -p "Write a Python function"
 
-# Gemini 3 Flash Preview (Experimental)
+# Gemini 3 Flash Preview (Supported via fork v1.3.1)
 COPILOT_MODEL=gemini-3-flash-preview ccc -p "Write a Python function"
 
 # Gemini 2.5 Pro (Stable)
@@ -221,9 +221,9 @@ COPILOT_MODEL=gpt-5-mini ccc -p "Test"
 ```bash
 COPILOT_MODEL=claude-sonnet-4-6 ccc -p "Test"
 COPILOT_MODEL=claude-opus-4-6 ccc -p "Test"
-COPILOT_MODEL=claude-opus-4.5 ccc -p "Test"
+COPILOT_MODEL=claude-opus-4-6 ccc -p "Test"
 COPILOT_MODEL=claude-opus-41 ccc -p "Test"
-COPILOT_MODEL=claude-sonnet-4.5 ccc -p "Test"
+COPILOT_MODEL=claude-sonnet-4-6 ccc -p "Test"
 COPILOT_MODEL=claude-sonnet-4 ccc -p "Test"
 COPILOT_MODEL=claude-haiku-4.5 ccc -p "Test"
 ```
@@ -247,7 +247,7 @@ COPILOT_MODEL=gemini-2.5-pro ccc -p "Test"
 | **Code generation (premium)** | `COPILOT_MODEL=gpt-5.3-codex ccc` |
 | **Code generation (fast)** | `COPILOT_MODEL=gpt-5.1-codex-mini ccc` |
 | **Alternative perspective** | `COPILOT_MODEL=gpt-4.1 ccc` |
-| **Experimental features** | `COPILOT_MODEL=gemini-3-pro-preview ccc` |
+| **Preview features (Supported)** | `COPILOT_MODEL=gemini-3-pro-preview ccc` |
 | **Speed-optimized** | `COPILOT_MODEL=grok-code-fast-1 ccc` |
 
 ---
@@ -258,5 +258,5 @@ COPILOT_MODEL=gemini-2.5-pro ccc -p "Test"
 
 ## Notes de Version
 
-- **v1.6.0** (2026-02-18): Claude 4.6 (sonnet/opus), gpt-5.3-codex, grok-code-fast-1
+- **v1.7.0** (2026-03-15): Claude 4.6 (sonnet/opus), gpt-5.3-codex, grok-code-fast-1
 - Dépréciés (17 fév 2026): gpt-5, gpt-5-codex, claude-opus-41

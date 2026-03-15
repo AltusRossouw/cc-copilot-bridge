@@ -7,6 +7,56 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Fixed
+
+---
+
+## [1.7.0] - 2026-03-15
+
+### Added
+
+**🔄 Fork caozhiyuan/copilot-api : v1.1.6 → v1.3.1**
+
+- Fork passe de EXPERIMENTAL à **RECOMMENDED** (plus stable, plus de features)
+- Native Anthropic Messages API pour Claude models (sans traduction Chat Completions)
+- smallModel routing : warmup/compact auto-routés vers gpt-5-mini (économies premium)
+- Flag `--claude-code` : génère la commande Claude Code (pour users sans claude-switch)
+- Per-model temperature/topP/topK config (v1.3.0)
+- Fix adaptive thinking avec tool choices (v1.2.4)
+
+**🚀 Nouveaux Modèles**
+
+- **gpt-5.4** : top GPT, xhigh reasoning — aliases `ccc-gpt54`, `ccc-gpt5`
+- **gpt-5.1** : GPT 5.1 standard — alias `ccc-gpt51`
+- **claude-opus-4.6-fast** : Opus rapide — alias `ccc-opus-fast`
+- **gemini-3.1-pro-preview** : Gemini 3.1 Pro — alias `ccc-gemini31`
+
+**📦 Nouveaux Aliases**
+
+- `ccc-gpt54` — gpt-5.4 (xhigh reasoning)
+- `ccc-gpt5` — gpt-5.4 (replaces deprecated gpt-5)
+- `ccc-gpt51` — gpt-5.1 standard
+- `ccc-opus-fast` — claude-opus-4.6-fast
+- `ccc-gemini31` — gemini-3.1-pro-preview
+
+### Changed
+
+- **Migration Claude 4.5 → 4.6** : Mise à jour globale de toutes les docs (README, guides, scripts) pour refléter claude-opus-4-6 et claude-sonnet-4-6
+- **ccfork → ccunified** : Renommage complet dans toutes les docs (QUICK-LAUNCH-GUIDE.md, ALL-MODEL-ALIASES.sh, test-all-models.sh)
+- **Fork EXPERIMENTAL → RECOMMENDED** : Le fork caozhiyuan/copilot-api v1.3.1 passe en statut RECOMMENDED dans README et TROUBLESHOOTING
+- **Formula Homebrew** : Mise à jour de 1.5.3 → 1.7.0
+
+### Fixed
+
+- **install.sh** : Correction des alias `ccc-opus` et `ccc-sonnet` qui pointaient encore sur 4.5 au lieu de 4.6
+- **Codex identity prompt** : Skip de l'injection identity pour les modèles `gpt-*-codex` (évite erreurs de format)
+
+---
+
 ## [1.6.0] - 2026-02-18
 
 ### Added
@@ -802,6 +852,7 @@ See [REPO-STRUCTURE.md](REPO-STRUCTURE.md) for contribution guidelines.
 - **Repository**: https://github.com/FlorianBruniaux/cc-copilot-bridge
 - **Issues**: https://github.com/FlorianBruniaux/cc-copilot-bridge/issues
 
+[1.7.0]: https://github.com/FlorianBruniaux/cc-copilot-bridge/releases/tag/v1.7.0
 [1.6.0]: https://github.com/FlorianBruniaux/cc-copilot-bridge/releases/tag/v1.6.0
 [1.5.3]: https://github.com/FlorianBruniaux/cc-copilot-bridge/releases/tag/v1.5.3
 [1.5.2]: https://github.com/FlorianBruniaux/cc-copilot-bridge/releases/tag/v1.5.2
@@ -811,4 +862,4 @@ See [REPO-STRUCTURE.md](REPO-STRUCTURE.md) for contribution guidelines.
 [1.3.0]: https://github.com/FlorianBruniaux/cc-copilot-bridge/releases/tag/v1.3.0
 [1.2.0]: https://github.com/FlorianBruniaux/cc-copilot-bridge/releases/tag/v1.2.0
 [1.0.0]: https://github.com/FlorianBruniaux/cc-copilot-bridge/releases/tag/v1.0.0
-[Unreleased]: https://github.com/FlorianBruniaux/cc-copilot-bridge/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/FlorianBruniaux/cc-copilot-bridge/compare/v1.7.0...HEAD

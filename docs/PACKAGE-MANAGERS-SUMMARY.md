@@ -40,7 +40,7 @@ alias cco='claude-switch ollama'
 alias ccs='claude-switch status'
 
 # Copilot Model Shortcuts
-alias ccc-opus='COPILOT_MODEL=claude-opus-4.5 claude-switch copilot'
+alias ccc-opus='COPILOT_MODEL=claude-opus-4-6 claude-switch copilot'
 ...
 ```
 
