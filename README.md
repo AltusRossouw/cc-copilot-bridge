@@ -237,7 +237,7 @@ No config changes, no restarts, no environment variable juggling.
 
 | Provider | Models | Cost Model |
 |----------|--------|------------|
-| **Anthropic** | opus-4.5, sonnet-4.5, haiku-4.5 | Per token |
+| **Anthropic** | opus-4-6, sonnet-4-6, haiku-4.5 | Per token |
 | **Copilot** | claude-*, gpt-4.1, gpt-5, gemini-*, **gpt-codex*** | Premium requests quota |
 | **Ollama** | devstral, granite4, qwen3-coder | Free (local) |
 

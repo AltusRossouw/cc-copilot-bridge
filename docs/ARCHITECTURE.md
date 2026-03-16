@@ -1,6 +1,6 @@
 # Architecture Deep-Dive
 
-**Reading time**: 25 minutes | **Skill level**: Advanced | **Last updated**: 2026-01-22
+**Reading time**: 25 minutes | **Skill level**: Advanced | **Last updated**: 2026-03-16
 
 **Comprehensive technical documentation of cc-copilot-bridge internals**
 
@@ -195,7 +195,7 @@ _run_copilot() {
 **Execution Flow**:
 ```
 cco [args] → _check_ollama() → set env vars → exec claude
---model qwen2.5-coder:32b [args]
+--model devstral-small-2 [args]
 ```
 
 **Implementation**:
@@ -212,7 +212,7 @@ _run_ollama() {
   export ANTHROPIC_API_KEY="ollama"
 
   _session_start "ollama"
-  claude --model qwen2.5-coder:32b "$@"
+  claude --model devstral-small-2 "$@"
   local rc=$?
   _session_end $rc
   return $rc
@@ -250,12 +250,12 @@ _check_ollama() {
   fi
 
   # Verify model availability
-  if ! ollama list 2>/dev/null | grep -q "qwen2.5-coder"; then
-    _log "ERROR" "Model qwen2.5-coder not found"
-    echo "  Pull it with: ollama pull qwen2.5-coder:32b"
+  if ! ollama list 2>/dev/null | grep -q "devstral"; then
+    _log "ERROR" "Model devstral not found"
+    echo "  Pull it with: ollama pull devstral-small-2"
     return 1
   fi
-  _log "INFO" "Ollama health: OK (qwen2.5-coder found)"
+  _log "INFO" "Ollama health: OK (devstral found)"
 }
 ```
 
@@ -799,7 +799,7 @@ export ANTHROPIC_BASE_URL="http://localhost:11434"
 # Ollama translates to OpenAI format internally:
 POST /v1/chat/completions
 {
-  "model": "qwen2.5-coder:32b",
+  "model": "devstral-small-2",
   "messages": [
     {"role": "user", "content": "Hello"}
   ]
@@ -810,13 +810,13 @@ POST /v1/chat/completions
 ```bash
 _run_ollama() {
   # Explicit model flag (overrides ANTHROPIC_MODEL)
-  claude --model qwen2.5-coder:32b "$@"
+  claude --model devstral-small-2 "$@"
 }
 ```
 
 **Why `--model` Flag Is Required**:
 - Claude Code CLI defaults to Anthropic's model names (`claude-3-5-sonnet`)
-- Ollama models use different naming (`qwen2.5-coder:32b`)
+- Ollama models use different naming (`devstral-small-2`)
 - `--model` flag overrides the default model selection
 
 **Model Availability Check**:
@@ -829,9 +829,9 @@ _check_ollama() {
   fi
 
   # 2. Model availability
-  if ! ollama list 2>/dev/null | grep -q "qwen2.5-coder"; then
-    _log "ERROR" "Model qwen2.5-coder not found"
-    echo "  Pull it with: ollama pull qwen2.5-coder:32b"
+  if ! ollama list 2>/dev/null | grep -q "devstral"; then
+    _log "ERROR" "Model devstral not found"
+    echo "  Pull it with: ollama pull devstral-small-2"
     return 1
   fi
 
@@ -845,14 +845,14 @@ _check_ollama() {
 ollama serve &
 
 # Pull models (one-time setup)
-ollama pull qwen2.5-coder:32b
-ollama pull deepseek-coder:33b
+ollama pull devstral-small-2
+ollama pull ibm/granite4:small-h
 
 # List available models
 ollama list
 
 # Use with cc-copilot-bridge
-cco  # Automatically uses qwen2.5-coder:32b
+cco  # Automatically uses devstral-small-2
 ```
 
 ---
@@ -1257,7 +1257,7 @@ _diagnose_mcp_schemas() {
 |---------|-------|----------|---------------|
 | `claude-switch direct` | `ccd` | Anthropic | claude-sonnet-4-6 |
 | `claude-switch copilot` | `ccc` | Copilot | claude-sonnet-4-6 |
-| `claude-switch ollama` | `cco` | Ollama | qwen2.5-coder:32b |
+| `claude-switch ollama` | `cco` | Ollama | devstral-small-2 |
 | `claude-switch status` | `ccs` | N/A | N/A |
 | N/A | `ccc-opus` | Copilot | claude-opus-4-6 |
 | N/A | `ccc-sonnet` | Copilot | claude-sonnet-4-6 |
@@ -1302,6 +1302,6 @@ cc-copilot-bridge implements a **zero-configuration routing layer** that enables
 ---
 
 **Maintenance Notes**:
-- This document reflects cc-copilot-bridge v1.2.0
-- Architecture unchanged since v1.0.0 (MCP Profiles added in v1.1.0)
+- This document reflects cc-copilot-bridge v1.7.0
+- Architecture unchanged since v1.0.0 (MCP Profiles added in v1.1.0, Ollama model updated to devstral-small-2 in v1.4.0)
 - Next major version (v2.0.0) will introduce automatic MCP schema fixing

@@ -813,7 +813,7 @@ None (initial release)
 
 ---
 
-## [Unreleased]
+## Roadmap (historical)
 
 ### Planned for v1.1
 
