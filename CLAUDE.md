@@ -393,6 +393,35 @@ ollama pull ibm/granite4:small-h
 - `gpt-5.4` (1x premium, xhigh reasoning)
 - `gpt-5-mini` (0x premium, fastest)
 
+## Quality Gates (before commit)
+
+```bash
+# Lint bash scripts
+shellcheck ~/bin/claude-switch install.sh mcp-check.sh
+
+# Test providers manually after any script change
+ccs  # Check all providers status
+```
+
+No automated test suite — changes must be verified by actually running the affected provider (`ccd`, `ccc`, `cco`) before committing.
+
+## Language & Communication
+
+- **User communicates in French**: Respond in French
+- **ALL project artifacts MUST be in English**: commit messages, script comments, README, docs
+
+## Working Directory Confirmation
+
+**ALWAYS confirm before starting any work**:
+
+```bash
+pwd  # Verify you're in /Users/florianbruniaux/Sites/perso/cc-copilot-bridge
+```
+
+**Key files are NOT in this repo** — the actual scripts live at `~/bin/claude-switch` and `~/.claude/mcp-profiles/`. Edits to files in this repo update the source; run `install.sh` to deploy to `~/bin/`.
+
+---
+
 ## File Organization Rules
 
 ### DO NOT modify these files directly:

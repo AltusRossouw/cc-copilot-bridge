@@ -25,6 +25,18 @@ Use your existing GitHub Copilot subscription with Claude Code, or run 100% offl
 
 ---
 
+## StarMapper
+
+<a href="https://starmapper.bruniaux.com/FlorianBruniaux/cc-copilot-bridge">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://starmapper.bruniaux.com/api/map-image/FlorianBruniaux/cc-copilot-bridge?theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://starmapper.bruniaux.com/api/map-image/FlorianBruniaux/cc-copilot-bridge?theme=light" />
+    <img alt="StarMapper — see who stars this repo on a world map" src="https://starmapper.bruniaux.com/api/map-image/FlorianBruniaux/cc-copilot-bridge" />
+  </picture>
+</a>
+
+---
+
 ## 🎯 What Is This?
 
 A **multi-provider router** for Claude Code CLI that lets you switch between AI backends with simple aliases.
