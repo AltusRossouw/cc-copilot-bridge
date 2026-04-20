@@ -21,10 +21,11 @@ alias cco='claude-switch ollama'
 alias ccs='claude-switch status'
 
 # Copilot Model Shortcuts
-alias ccc-opus='COPILOT_MODEL=claude-opus-4-6 claude-switch copilot'
+alias ccc-opus='COPILOT_MODEL=claude-opus-4.7 claude-switch copilot'
 alias ccc-sonnet='COPILOT_MODEL=claude-sonnet-4-6 claude-switch copilot'
 alias ccc-haiku='COPILOT_MODEL=claude-haiku-4.5 claude-switch copilot'
-alias ccc-opus46='COPILOT_MODEL=claude-opus-4-6 claude-switch copilot'
+alias ccc-opus47='COPILOT_MODEL=claude-opus-4.7 claude-switch copilot'
+alias ccc-opus46='COPILOT_MODEL=claude-opus-4.6 claude-switch copilot'
 alias ccc-sonnet46='COPILOT_MODEL=claude-sonnet-4-6 claude-switch copilot'
 alias ccc-opus-fast='COPILOT_MODEL=claude-opus-4.6-fast claude-switch copilot'
 alias ccc-gpt='COPILOT_MODEL=gpt-4.1 claude-switch copilot'
@@ -53,7 +54,7 @@ alias ccc-codex-max='COPILOT_MODEL=gpt-5.1-codex-max claude-switch copilot'
 alias ccc-gpt53-codex='COPILOT_MODEL=gpt-5.3-codex claude-switch copilot'
 
 # Semantic Shortcuts
-alias ccc-prod='COPILOT_MODEL=claude-opus-4-6 claude-switch copilot'
+alias ccc-prod='COPILOT_MODEL=claude-opus-4.7 claude-switch copilot'
 alias ccc-dev='COPILOT_MODEL=claude-sonnet-4-6 claude-switch copilot'
 alias ccc-quick='COPILOT_MODEL=claude-haiku-4.5 claude-switch copilot'
 alias ccc-code='COPILOT_MODEL=gpt-5.3-codex claude-switch copilot'

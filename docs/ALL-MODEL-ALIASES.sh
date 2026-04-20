@@ -65,11 +65,13 @@ alias ccc-gpt35='COPILOT_MODEL=gpt-3.5-turbo claude-switch copilot'
 alias ccc-gpt35-jun='COPILOT_MODEL=gpt-3.5-turbo-0613 claude-switch copilot'
 
 #############################################################################################
-# CLAUDE MODELS (5)
+# CLAUDE MODELS (6)
 #############################################################################################
 
-alias ccc-opus='COPILOT_MODEL=claude-opus-4-6 claude-switch copilot'
+alias ccc-opus='COPILOT_MODEL=claude-opus-4-7 claude-switch copilot'
+alias ccc-opus47='COPILOT_MODEL=claude-opus-4-7 claude-switch copilot'
 alias ccc-opus41='COPILOT_MODEL=claude-opus-41 claude-switch copilot'
+alias ccc-opus46='COPILOT_MODEL=claude-opus-4-6 claude-switch copilot'
 alias ccc-sonnet='COPILOT_MODEL=claude-sonnet-4-6 claude-switch copilot'
 alias ccc-sonnet4='COPILOT_MODEL=claude-sonnet-4 claude-switch copilot'
 alias ccc-haiku='COPILOT_MODEL=claude-haiku-4.5 claude-switch copilot'

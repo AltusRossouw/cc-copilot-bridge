@@ -141,7 +141,8 @@ alias cco='claude-switch ollama'
 alias ccs='claude-switch status'
 
 # Copilot Model Shortcuts
-alias ccc-opus='COPILOT_MODEL=claude-opus-4-6 claude-switch copilot'
+alias ccc-opus='COPILOT_MODEL=claude-opus-4.7 claude-switch copilot'
+alias ccc-opus47='COPILOT_MODEL=claude-opus-4.7 claude-switch copilot'
 alias ccc-sonnet='COPILOT_MODEL=claude-sonnet-4-6 claude-switch copilot'
 alias ccc-haiku='COPILOT_MODEL=claude-haiku-4.5 claude-switch copilot'
 alias ccc-gpt='COPILOT_MODEL=gpt-4.1 claude-switch copilot'

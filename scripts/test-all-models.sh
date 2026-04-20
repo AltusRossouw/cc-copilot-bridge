@@ -88,6 +88,7 @@ test_model "gpt-3.5-turbo-0613" "GPT-3.5 Turbo Jun 2023"
 
 # Claude Models
 echo -e "${YELLOW}=== Claude Models ===${NC}\n"
+test_model "claude-opus-4-7" "Claude Opus 4.7"
 test_model "claude-opus-4-6" "Claude Opus 4.6"
 test_model "claude-opus-41" "Claude Opus 4.1"
 test_model "claude-sonnet-4-6" "Claude Sonnet 4.6"

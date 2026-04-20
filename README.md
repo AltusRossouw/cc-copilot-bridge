@@ -144,7 +144,8 @@ cco        # Ollama Local (offline)
 ccs        # Check all providers
 
 # Model shortcuts (40+ models)
-ccc-opus='COPILOT_MODEL=claude-opus-4-6 claude-switch copilot'
+ccc-opus='COPILOT_MODEL=claude-opus-4-7 claude-switch copilot'
+ccc-opus47='COPILOT_MODEL=claude-opus-4-7 claude-switch copilot'
 ccc-sonnet='COPILOT_MODEL=claude-sonnet-4-6 claude-switch copilot'
 ccc-gpt='COPILOT_MODEL=gpt-4.1 claude-switch copilot'
 ccc-grok='COPILOT_MODEL=grok-code-fast-1 claude-switch copilot'
@@ -161,7 +162,7 @@ ccc
 
 # Switch models on-the-fly
 COPILOT_MODEL=gpt-4.1 ccc
-COPILOT_MODEL=claude-opus-4-6 ccc
+COPILOT_MODEL=claude-opus-4-7 ccc
 
 # Check status
 ccs
@@ -172,8 +173,8 @@ ccs
 **Claude Sonnet 4.6 (Default)**:
 ![Claude Sonnet 4.6](assets/ccc-sonnet.png)
 
-**Claude Opus 4.6 (Premium)**:
-![Claude Opus 4.6](assets/ccc-opus.png)
+**Claude Opus 4.7 (Premium)**:
+![Claude Opus 4.7](assets/ccc-opus.png)
 
 **GPT-4.1 (OpenAI)**:
 ![GPT-4.1](assets/ccc-gpt.png)
@@ -249,14 +250,14 @@ No config changes, no restarts, no environment variable juggling.
 
 | Provider | Models | Cost Model |
 |----------|--------|------------|
-| **Anthropic** | opus-4-6, sonnet-4-6, haiku-4.5 | Per token |
+| **Anthropic** | opus-4-7, opus-4-6, sonnet-4-6, haiku-4.5 | Per token |
 | **Copilot** | claude-*, gpt-4.1, gpt-5, gemini-*, **gpt-codex*** | Premium requests quota |
 | **Ollama** | devstral, granite4, qwen3-coder | Free (local) |
 
 ```bash
 # Switch models mid-session
 ccc                     # Default: claude-sonnet-4-6
-ccc-opus                # Claude Opus 4.6
+ccc-opus                # Claude Opus 4.7
 ccc-gpt                 # GPT-4.1
 COPILOT_MODEL=gemini-2.5-pro ccc  # Gemini
 

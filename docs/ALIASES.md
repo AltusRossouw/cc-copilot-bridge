@@ -23,9 +23,10 @@ eval "$(claude-switch --shell-config)"
 
 | Alias | Model | Billing | Use Case |
 |-------|-------|---------|----------|
-| `ccc-opus` | `claude-opus-4-6` | 0x (free) | Best quality, production code, critical decisions |
+| `ccc-opus` | `claude-opus-4-7` | 0x (free) | Best quality, production code, critical decisions |
 | `ccc-sonnet` | `claude-sonnet-4-6` | 0x (free) | Daily development, balanced quality/speed |
 | `ccc-haiku` | `claude-haiku-4.5` | 0x (free) | Fastest responses, quick questions |
+| `ccc-opus47` | `claude-opus-4-7` | 0x (free) | Explicit 4.7 alias |
 | `ccc-opus46` | `claude-opus-4-6` | 0x (free) | Explicit 4.6 alias |
 | `ccc-sonnet46` | `claude-sonnet-4-6` | 0x (free) | Explicit 4.6 alias |
 
@@ -135,7 +136,7 @@ User-friendly aliases that map to specific use cases:
 
 | Alias | Resolves To | Use Case |
 |-------|-------------|----------|
-| `ccc-prod` | `claude-opus-4-6` | Production code, critical decisions |
+| `ccc-prod` | `claude-opus-4-7` | Production code, critical decisions |
 | `ccc-dev` | `claude-sonnet-4-6` | Daily development |
 | `ccc-quick` | `ccc-haiku` | Quick questions, explanations |
 | `ccc-code` | `ccc-gpt53-codex` | Pure code generation (requires ccunified) |
