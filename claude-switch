@@ -128,6 +128,7 @@ _set_prompt_args() {
   local model="${1:-}"
   local prompts_dir="${HOME}/.claude/mcp-profiles/prompts"
   local prompt_file=""
+  local prompt_content=""
 
   # Reset array
   PROMPT_ARGS=()
@@ -138,18 +139,22 @@ _set_prompt_args() {
     gpt-*-codex*) return 0 ;;  # Codex: no identity injection (has its own identity)
     gpt-*)        prompt_file="${prompts_dir}/gpt-4.1.txt" ;;  # Fallback for other GPT
     gemini-*)     prompt_file="${prompts_dir}/gemini.txt" ;;
-    claude-*|*)   return 0 ;;  # Claude uses default prompt
+    claude-*)
+      prompt_content="You are running via Claude Code through GitHub Copilot proxy with model ${model}.\nWhen asked which model you are using, answer with this exact model ID: ${model}.\nDo not claim to be Sonnet 4.5 unless the model ID is explicitly claude-sonnet-4.5."
+      ;;
+    *)            return 0 ;;
   esac
 
-  # Check if prompt file exists
-  if [[ ! -f "${prompt_file}" ]]; then
-    _log "WARN" "System prompt not found: ${prompt_file}"
-    return 0
-  fi
+  if [[ -n "${prompt_file}" ]]; then
+    # Check if prompt file exists
+    if [[ ! -f "${prompt_file}" ]]; then
+      _log "WARN" "System prompt not found: ${prompt_file}"
+      return 0
+    fi
 
-  # Read prompt content safely
-  local prompt_content
-  prompt_content=$(cat "${prompt_file}")
+    # Read prompt content safely
+    prompt_content=$(cat "${prompt_file}")
+  fi
 
   # Set array elements (proper bash array, handles newlines and special chars)
   PROMPT_ARGS=("--append-system-prompt" "${prompt_content}")
